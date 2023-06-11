@@ -25,7 +25,7 @@ public class LearnIbmmqApplication {
 	@GetMapping("send")
 	String send(){
 		try{
-			jmsTemplate.convertAndSend("DEV.QUEUE.1", "Hello World!");
+			jmsTemplate.convertAndSend("DEV.QUEUE.1", "Sample Message from Spring Boot App");
 			return "OK";
 		}catch(JmsException ex){
 			ex.printStackTrace();
@@ -33,7 +33,7 @@ public class LearnIbmmqApplication {
 		}
 	}
 
-	@GetMapping("recv")
+	@GetMapping("receive")
 	String recv(){
 		try{
 			return jmsTemplate.receiveAndConvert("DEV.QUEUE.1").toString();
